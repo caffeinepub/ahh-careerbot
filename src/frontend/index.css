@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Fonts ─────────────────────────────────────────────── */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora[wght].woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono[wght].woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── AHH CareerBot Design Tokens ────────────────────────── */
+/* Dark-first: deep navy + electric teal palette            */
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Deep navy backgrounds */
+    --background: 0.12 0.025 255;
+    --foreground: 0.93 0.02 240;
+
+    /* Cards: slightly lighter navy */
+    --card: 0.16 0.03 255;
+    --card-foreground: 0.93 0.02 240;
+
+    /* Popover */
+    --popover: 0.18 0.035 255;
+    --popover-foreground: 0.93 0.02 240;
+
+    /* Primary: Electric teal/cyan */
+    --primary: 0.72 0.19 195;
+    --primary-foreground: 0.1 0.02 255;
+
+    /* Secondary: Navy accent */
+    --secondary: 0.22 0.045 255;
+    --secondary-foreground: 0.93 0.02 240;
+
+    /* Muted */
+    --muted: 0.2 0.035 255;
+    --muted-foreground: 0.62 0.05 240;
+
+    /* Accent: Bright teal highlight */
+    --accent: 0.22 0.045 255;
+    --accent-foreground: 0.72 0.19 195;
+
+    /* Destructive: warm coral */
+    --destructive: 0.62 0.2 25;
+    --destructive-foreground: 0.98 0 0;
+
+    /* Borders */
+    --border: 0.28 0.045 250;
+    --input: 0.22 0.04 255;
+    --ring: 0.72 0.19 195;
+
+    /* Charts */
+    --chart-1: 0.72 0.19 195;
+    --chart-2: 0.65 0.16 220;
+    --chart-3: 0.55 0.14 240;
+    --chart-4: 0.80 0.15 165;
+    --chart-5: 0.60 0.22 200;
+
+    /* Sidebar */
+    --sidebar: 0.14 0.028 255;
+    --sidebar-foreground: 0.93 0.02 240;
+    --sidebar-primary: 0.72 0.19 195;
+    --sidebar-primary-foreground: 0.1 0.02 255;
+    --sidebar-accent: 0.20 0.04 255;
+    --sidebar-accent-foreground: 0.72 0.19 195;
+    --sidebar-border: 0.28 0.045 250;
+    --sidebar-ring: 0.72 0.19 195;
+
+    /* Custom tokens */
+    --teal: 0.72 0.19 195;
+    --teal-dim: 0.55 0.14 195;
+    --teal-bright: 0.82 0.22 190;
+    --navy-deep: 0.10 0.02 255;
+    --navy-mid: 0.16 0.03 255;
+    --navy-light: 0.22 0.04 255;
+    --gold: 0.80 0.15 80;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Sora", sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 700;
+  }
+
+  code, pre, .mono {
+    font-family: "JetBrains Mono", monospace;
+  }
+}
+
+/* ── Utilities ──────────────────────────────────────────── */
+@layer utilities {
+  .text-teal {
+    color: oklch(var(--teal));
+  }
+
+  .text-teal-bright {
+    color: oklch(var(--teal-bright));
+  }
+
+  .bg-teal {
+    background-color: oklch(var(--teal));
+  }
+
+  .bg-navy-deep {
+    background-color: oklch(var(--navy-deep));
+  }
+
+  .bg-navy-mid {
+    background-color: oklch(var(--navy-mid));
+  }
+
+  .border-teal {
+    border-color: oklch(var(--teal));
+  }
+
+  .border-teal\/30 {
+    border-color: oklch(var(--teal) / 0.3);
+  }
+
+  .glow-teal {
+    box-shadow: 0 0 20px oklch(var(--teal) / 0.3), 0 0 40px oklch(var(--teal) / 0.1);
+  }
+
+  .glow-teal-sm {
+    box-shadow: 0 0 10px oklch(var(--teal) / 0.25);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, oklch(var(--teal-bright)), oklch(var(--teal)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .mesh-bg {
+    background:
+      radial-gradient(ellipse at 20% 50%, oklch(var(--teal) / 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, oklch(var(--teal-dim) / 0.06) 0%, transparent 40%),
+      radial-gradient(ellipse at 60% 80%, oklch(0.45 0.1 240 / 0.07) 0%, transparent 40%),
+      oklch(var(--navy-deep));
+  }
+
+  .card-glass {
+    background: oklch(var(--navy-mid) / 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(var(--teal) / 0.15);
+  }
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--navy-deep));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--teal) / 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--teal) / 0.65);
+}
+
+/* ── Focus visible ─────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid oklch(var(--teal));
+  outline-offset: 2px;
+}
